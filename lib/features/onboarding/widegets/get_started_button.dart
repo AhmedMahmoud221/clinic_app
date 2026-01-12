@@ -1,3 +1,5 @@
+import 'package:clinic_app/core/helpers/extensions.dart';
+import 'package:clinic_app/core/routing/routes.dart';
 import 'package:clinic_app/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +10,7 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-
+        context.pushNamed(Routes.loginScreen);
       }, 
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all(Colors.blue),
@@ -22,7 +24,8 @@ class GetStartedButton extends StatelessWidget {
 
       ),
       child:
-        Text('Get Started',
+        Text(
+          'Get Started',
           style: TextStyles.font16GreySemiBold,
         ) 
     );
