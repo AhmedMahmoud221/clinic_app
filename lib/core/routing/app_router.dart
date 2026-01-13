@@ -1,7 +1,7 @@
 import 'package:clinic_app/core/routing/routes.dart';
 import 'package:clinic_app/features/login/ui/widgets/login_screen.dart';
 import 'package:clinic_app/features/onboarding/onboarding_screen.dart';
-import 'package:clinic_app/features/splash/splash_screen.dart';
+// import 'package:clinic_app/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -10,8 +10,8 @@ class AppRouter {
     // final arguments = setting.arguments;
 
     switch (setting.name) {
-      case Routes.splashScreen: // ضيف الحالة دي
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
+      // case Routes.splashScreen: // ضيف الحالة دي
+      //   return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.loginScreen:
