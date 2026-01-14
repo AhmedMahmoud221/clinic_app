@@ -20,8 +20,11 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   bool hasUpperCase = false;
   bool hasSpecialCharacters = false;
   bool hasNumber = false;
-  
+
   bool hasMinLength = false;
+
+
+
 
 
   // o
@@ -48,6 +51,8 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                 return 'Please enter a valid email';
               }
             },
+
+            
             controller: context.read<LoginCubit>().emailController,
           ),
           verticalSpace(18),
