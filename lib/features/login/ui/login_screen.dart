@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 verticalSpace(8),
                 Text(
                   'We\'re excited to have you back, can\'t wait to see what you\'ve been up to since you last logged in',
-                  style: TextStyles.font14GreyRegular,
+                  style: TextStyles.font14GrayRegular,
                 ),
                 verticalSpace(36),
                 Form(
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: Icon(
                             isObscureText ? Icons.visibility_off : Icons.visibility,
-                            color: isObscureText ? ColorsManger.lightGrey : ColorsManger.mainBlue,
+                            color: isObscureText ? ColorsManager.lightGray : ColorsManager.mainBlue,
                           )
                         ),
                       ),

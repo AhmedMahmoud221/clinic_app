@@ -24,22 +24,22 @@ class AppTextFormField extends StatelessWidget {
         focusedBorder: focusedBorder ?? OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
-            color: ColorsManger.mainBlue,
+            color: ColorsManager.mainBlue,
             width: 1.3,
           ),
         ),
         enabledBorder: enabledBorder ?? OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(
-            color: ColorsManger.lightGrey,
+            color: ColorsManager.lightGray,
             width: 1.3,
           ),
         ),
-        hintStyle: hintStyle ?? TextStyles.font14LightGreyRegular,
+        hintStyle: hintStyle ?? TextStyles.font14LightGrayRegular,
         hintText: hintText,
         suffixIcon: suffixIcon,
         filled: true,
-        fillColor: backgroundColor ?? ColorsManger.moreLightGrey,
+        fillColor: backgroundColor ?? ColorsManager.moreLightGray,
       ),
       obscureText: isObscureText ?? false,
       style: inputTextStyle ?? TextStyles.font14DarkBlueMedium.copyWith(
