@@ -1,5 +1,5 @@
 import 'package:clinic_app/core/routing/routes.dart';
-import 'package:clinic_app/features/login/ui/widgets/login_screen.dart';
+import 'package:clinic_app/features/login/ui/login_screen.dart';
 import 'package:clinic_app/features/onboarding/onboarding_screen.dart';
 // import 'package:clinic_app/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
