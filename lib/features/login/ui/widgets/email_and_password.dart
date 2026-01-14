@@ -20,7 +20,11 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   bool hasUpperCase = false;
   bool hasSpecialCharacters = false;
   bool hasNumber = false;
+  
   bool hasMinLength = false;
+
+
+  // o
 
   late TextEditingController passwordController;
   
