@@ -13,11 +13,26 @@ class AppTextFormField extends StatelessWidget {
   final bool? isObscureText;
   final Widget? suffixIcon;
   final Color? backgroundColor;
-  const AppTextFormField({super.key, this.focusedBorder, this.enabledBorder, this.inputTextStyle, this.hintStyle, required this.hintText, this.isObscureText, this.suffixIcon, this.contentPadding, this.backgroundColor});
+  final TextEditingController? controller;
+  final Function(String?) validator;
+  const AppTextFormField({
+    super.key, 
+    this.focusedBorder, 
+    this.enabledBorder, 
+    this.inputTextStyle, 
+    this.hintStyle, 
+    required this.hintText, 
+    this.isObscureText, 
+    this.suffixIcon, 
+    this.contentPadding, 
+    this.backgroundColor, 
+    this.controller, 
+    required this.validator});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
         isDense: true,
         contentPadding: contentPadding ?? EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
@@ -25,6 +40,18 @@ class AppTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           borderSide: const BorderSide(
             color: ColorsManager.mainBlue,
+            width: 1.3,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.red,
+            width: 1.3,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.red,
             width: 1.3,
           ),
         ),
@@ -45,6 +72,9 @@ class AppTextFormField extends StatelessWidget {
       style: inputTextStyle ?? TextStyles.font14DarkBlueMedium.copyWith(
         color: Colors.black,
       ),
+      validator: (value) {
+        return validator (value);
+      },
     );
   }
 }
