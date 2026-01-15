@@ -3,7 +3,7 @@ import 'package:clinic_app/core/helpers/spacing.dart';
 import 'package:clinic_app/core/theming/colors.dart';
 import 'package:clinic_app/core/widgets/app_text_form_field.dart';
 import 'package:clinic_app/features/login/logic/cubit/login_cubit.dart';
-import 'package:clinic_app/features/login/ui/widgets/password_validations.dart';
+// import 'package:clinic_app/features/login/ui/widgets/password_validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,39 +17,32 @@ class EmailAndPassword extends StatefulWidget {
 class _EmailAndPasswordState extends State<EmailAndPassword> {
   bool isObscureText = true;
 
-  bool hasLowerCase = false;
-  bool hasUpperCase = false;
-  bool hasSpecialCharacters = false;
-  bool hasNumber = false;
+  // bool hasLowerCase = false;
+  // bool hasUpperCase = false;
+  // bool hasSpecialCharacters = false;
+  // bool hasNumber = false;
+  // bool hasMinLength = false;
 
-  bool hasMinLength = false;
-
-
-
-
-
-  // o
-
-  late TextEditingController passwordController;
+  // late TextEditingController passwordController;
   
-  @override
-  void initState() {
-    super.initState();
-    passwordController = context.read<LoginCubit>().passwordController;
-    setupPasswordControllerListener();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   passwordController = context.read<LoginCubit>().passwordController;
+  //   setupPasswordControllerListener();
+  // }
 
-  void setupPasswordControllerListener() {
-    passwordController.addListener(() {
-      setState(() {
-        hasLowerCase = AppRegex.hasLowerCase(passwordController.text);
-        hasUpperCase = AppRegex.hasUpperCase(passwordController.text);
-        hasSpecialCharacters = AppRegex.hasSpecialCharacter(passwordController.text);
-        hasNumber = AppRegex.hasNumber(passwordController.text);
-        hasMinLength = AppRegex.hasMinLength(passwordController.text);
-      });
-    });
-  }
+  // void setupPasswordControllerListener() {
+  //   passwordController.addListener(() {
+  //     setState(() {
+  //       hasLowerCase = AppRegex.hasLowerCase(passwordController.text);
+  //       hasUpperCase = AppRegex.hasUpperCase(passwordController.text);
+  //       hasSpecialCharacters = AppRegex.hasSpecialCharacter(passwordController.text);
+  //       hasNumber = AppRegex.hasNumber(passwordController.text);
+  //       hasMinLength = AppRegex.hasMinLength(passwordController.text);
+  //     });
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +63,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           AppTextFormField(
             controller: context.read<LoginCubit>().passwordController,
             hintText: 'Password',
-            isObscureText: isObscureText,
+            // isObscureText: isObscureText,
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
@@ -88,22 +81,22 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
               }
             },
           ),
-          verticalSpace(24),
-          PasswordValidations(
-            hasLowerCase: hasLowerCase,
-            hasUpperCase: hasUpperCase,
-            hasSpecialCharacters: hasSpecialCharacters,
-            hasNumber: hasNumber,
-            hasMinLength: hasMinLength,
-          ),
+          // verticalSpace(24),
+          // PasswordValidations(
+          //   hasLowerCase: hasLowerCase,
+          //   hasUpperCase: hasUpperCase,
+          //   hasSpecialCharacters: hasSpecialCharacters,
+          //   hasNumber: hasNumber,
+          //   hasMinLength: hasMinLength,
+          // ),
         ],
       ),
     );
   }
 
-  @override
-  void dispose() {
-    passwordController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   passwordController.dispose();
+  //   super.dispose();
+  // }
 }

@@ -4,6 +4,8 @@ import 'package:clinic_app/features/home/ui/home_screen.dart';
 import 'package:clinic_app/features/login/logic/cubit/login_cubit.dart';
 import 'package:clinic_app/features/login/ui/login_screen.dart';
 import 'package:clinic_app/features/onboarding/onboarding_screen.dart';
+import 'package:clinic_app/features/sign_up/logic/cubit/sign_up_cubit.dart';
+import 'package:clinic_app/features/sign_up/ui/sign_up_screen.dart';
 // import 'package:clinic_app/features/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,8 +18,6 @@ class AppRouter {
     switch (setting.name) {
       // case Routes.splashScreen: // ضيف الحالة دي
       //   return MaterialPageRoute(builder: (_) => const SplashScreen());
-      case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.loginScreen:
@@ -27,6 +27,15 @@ class AppRouter {
             child: const LoginScreen(),
           ),
         );
+      case Routes.signupScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<SignupCubit>(),
+            child: const SignupScreen(),
+          ),
+        );
+      case Routes.homeScreen:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

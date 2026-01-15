@@ -1,9 +1,8 @@
 import 'package:clinic_app/core/helpers/spacing.dart';
 import 'package:clinic_app/core/theming/styles.dart';
 import 'package:clinic_app/core/widgets/app_text_button.dart';
-import 'package:clinic_app/features/login/data/models/login_request_body.dart';
 import 'package:clinic_app/features/login/logic/cubit/login_cubit.dart';
-import 'package:clinic_app/features/login/ui/widgets/already_have_account_text.dart';
+import 'package:clinic_app/features/login/ui/widgets/dont_have_account_text.dart';
 import 'package:clinic_app/features/login/ui/widgets/email_and_password.dart';
 import 'package:clinic_app/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:clinic_app/features/login/ui/widgets/terms_and_conditions_text.dart';
@@ -37,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                 Column(
                   children: [
                     const EmailAndPassword(),
-                    verticalSpace(24),
+                    verticalSpace(12),
                     Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: Text(
@@ -45,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                         style: TextStyles.font13BlueRegular,
                       ),
                     ),
-                    verticalSpace(40),
+                    verticalSpace(16),
                     AppTextButton(
                       buttonText: 'Login', 
                       textStyle: TextStyles.font16WhiteSemiBold, 
@@ -55,8 +54,8 @@ class LoginScreen extends StatelessWidget {
                     ),
                     verticalSpace(16),
                     const TermsAndConditionsText(),
-                    verticalSpace(60),
-                    const AlreadyHaveAccountText(),
+                    verticalSpace(20),
+                    const DontHaveAccountText(),
                     const LoginBlocListener(),
                   ],
                 ),
@@ -69,12 +68,8 @@ class LoginScreen extends StatelessWidget {
   }
 
   void validateThenDoLogin(BuildContext context) {
-    if(context.read<LoginCubit>().formKey.currentState!.validate()) {
-      context.read<LoginCubit>().emitLoginStates(LoginRequestBody(
-        email: context.read<LoginCubit>().emailController.text, 
-        password: context.read<LoginCubit>().passwordController.text,
-        ),
-      );
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoginStates();
     }
   }
 }
