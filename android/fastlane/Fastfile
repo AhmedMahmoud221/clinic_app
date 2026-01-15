@@ -5,6 +5,9 @@ platform :android do
   lane :distribute do
     # 1. بناء نسخة الـ APK
     sh("flutter build apk --release")
+
+    # زيادة وقت الانتظار للتعامل مع سرعة الإنترنت البطيئة
+    ENV["FASTLANE_HTTP_TIMEOUT"] = "600" # يعني اصبر 10 دقائق كاملة
     
     # 2. رفع الملف لـ Firebase
     firebase_app_distribution(
