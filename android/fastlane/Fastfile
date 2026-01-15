@@ -1,0 +1,17 @@
+default_platform(:android)
+
+platform :android do
+  desc "بناء ورفع التطبيق لـ Firebase App Distribution"
+  lane :distribute do
+    # 1. بناء نسخة الـ APK
+    sh("flutter build apk --release")
+    
+    # 2. رفع الملف لـ Firebase
+    firebase_app_distribution(
+        app: "1:264842213154:android:3c51cd2805079d0860177b",
+        groups: "testers",
+        release_notes: "تحديث جديد لتطبيق العيادة",
+        android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk"
+    )
+  end
+end

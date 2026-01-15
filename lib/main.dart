@@ -16,3 +16,7 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   runApp(DocApp(appRouter: AppRouter()));
 }
+
+
+  // fastlane distribute 
+  // for upload apk to firebase
