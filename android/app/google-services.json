@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "264842213154",
+    "project_id": "flutter-docdoc-app",
+    "storage_bucket": "flutter-docdoc-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264842213154:android:3c51cd2805079d0860177b",
+        "android_client_info": {
+          "package_name": "com.example.clinic_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIK-eKEr4Ak0f0jaBZcY8NlEMSiHCe4Wc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
