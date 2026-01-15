@@ -1,3 +1,4 @@
+import 'package:clinic_app/core/helpers/app_regex.dart';
 import 'package:clinic_app/core/helpers/spacing.dart';
 import 'package:clinic_app/core/theming/colors.dart';
 import 'package:clinic_app/core/widgets/app_text_form_field.dart';
@@ -35,7 +36,19 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   void initState() {
     super.initState();
     passwordController = context.read<LoginCubit>().passwordController;
-    // setupPasswordControllerListener
+    setupPasswordControllerListener();
+  }
+
+  void setupPasswordControllerListener() {
+    passwordController.addListener(() {
+      setState(() {
+        hasLowerCase = AppRegex.hasLowerCase(passwordController.text);
+        hasUpperCase = AppRegex.hasUpperCase(passwordController.text);
+        hasSpecialCharacters = AppRegex.hasSpecialCharacter(passwordController.text);
+        hasNumber = AppRegex.hasNumber(passwordController.text);
+        hasMinLength = AppRegex.hasMinLength(passwordController.text);
+      });
+    });
   }
 
   @override
@@ -47,18 +60,13 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
           AppTextFormField(
             hintText: 'Email',
             validator: (value) {
-              if (value == null || value.isEmpty) {
+              if (value == null || value.isEmpty || !AppRegex.isEmailValid(value)) {
                 return 'Please enter a valid email';
               }
             },
-
-            
             controller: context.read<LoginCubit>().emailController,
           ),
           verticalSpace(18),
-
-
-          //
           AppTextFormField(
             controller: context.read<LoginCubit>().passwordController,
             hintText: 'Password',
@@ -91,5 +99,11 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    passwordController.dispose();
+    super.dispose();
   }
 }
