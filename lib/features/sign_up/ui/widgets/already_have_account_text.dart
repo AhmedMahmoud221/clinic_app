@@ -4,7 +4,6 @@ import 'package:clinic_app/core/theming/styles.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-
 class AlreadyHaveAccountText extends StatelessWidget {
   const AlreadyHaveAccountText({super.key});
 
@@ -23,7 +22,7 @@ class AlreadyHaveAccountText extends StatelessWidget {
             style: TextStyles.font13BlueSemiBold,
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.pushReplacmentNamed(Routes.loginScreen);
+                context.pushReplacementNamed(Routes.loginScreen);
               },
           ),
         ],

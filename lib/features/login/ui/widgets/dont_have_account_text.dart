@@ -16,18 +16,19 @@ class DontHaveAccountText extends StatelessWidget {
           TextSpan(
             text: 'Don\'t have an account? ',
             style: TextStyles.font13DarkBlueRegular.copyWith(
-              color: Color.fromARGB(255, 71, 71, 71)
+              color: Color.fromARGB(255, 71, 71, 71),
             ),
           ),
           TextSpan(
             text: 'Sign Up',
             style: TextStyles.font13BlueSemiBold,
-            recognizer: TapGestureRecognizer()..onTap = () {
-              context.pushReplacmentNamed(Routes.signupScreen);
-            },
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                context.pushReplacementNamed(Routes.signupScreen);
+              },
           ),
         ],
-      ), 
+      ),
     );
   }
 }

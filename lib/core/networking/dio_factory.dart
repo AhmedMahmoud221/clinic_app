@@ -5,7 +5,6 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../helpers/shared_pref_helper.dart';
 
 class DioFactory {
-  /// private constructor as I don't want to allow creating an instance of this class
   DioFactory._();
 
   static Dio? dio;
@@ -18,29 +17,37 @@ class DioFactory {
       dio!
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
-      addDioHeaders();
-      addDioInterceptor();
+
+      // بنضيف الهيدرز الأساسية فقط هنا
+      dio!.options.headers = {'Accept': 'application/json'};
+
+      addDioInterceptor(); // استدعاء الانترسبتور
       return dio!;
     } else {
       return dio!;
     }
   }
 
-  static void addDioHeaders() async {
-    dio?.options.headers = {
-      'Accept': 'application/json',
-      'Authorization':
-          'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
-    };
-  }
-
-  static void setTokenIntoHeaderAfterLogin(String token) {
-    dio?.options.headers = {
-      'Authorization': 'Bearer $token',
-    };
-  }
-
   static void addDioInterceptor() {
+    dio?.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          // جلب التوكن من التخزين الآمن
+          final token = await SharedPrefHelper.getSecuredString(
+            SharedPrefKeys.userToken,
+          );
+
+          // إذا وجدنا توكن، نضيفه للهيدر فوراً قبل خروج الطلب
+          if (token != null && token.isNotEmpty) {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
+
+          return handler.next(options);
+        },
+      ),
+    );
+
+    // الـ Logger لمراقبة الطلبات في الـ Console
     dio?.interceptors.add(
       PrettyDioLogger(
         requestBody: true,

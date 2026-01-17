@@ -1,3 +1,5 @@
+import 'package:clinic_app/core/helpers/constants.dart';
+import 'package:clinic_app/core/helpers/shared_pref_helper.dart';
 import 'package:clinic_app/core/networking/api_result.dart';
 import 'package:clinic_app/features/login/data/models/login_request_body.dart';
 import 'package:flutter/widgets.dart';
@@ -13,20 +15,30 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-
   void emitLoginStates() async {
     emit(const LoginState.loading());
     final response = await _loginRepo.login(
       LoginRequestBody(
-        email: emailController.text, 
+        email: emailController.text,
         password: passwordController.text,
       ),
     );
 
-    response.when(success: (loginResponse) {
-      emit(LoginState.success(loginResponse));
-    }, failure: (error) {
-      emit(LoginState.error(error: error.apiErrorModel.message ?? ''));
-    });
+    response.when(
+      success: (loginResponse) async {
+        // 1. حفظ التوكن أولاً بشكل آمن
+        await saveUserToken(loginResponse.userData?.token ?? '');
+        // 2. بعد الحفظ، نرسل حالة النجاح
+        emit(LoginState.success(loginResponse));
+      },
+      failure: (error) {
+        emit(LoginState.error(error: error.apiErrorModel.message ?? ''));
+      },
+    );
+  }
+
+  // دالة مساعدة داخل الكيوبيت لحفظ التوكن
+  Future<void> saveUserToken(String token) async {
+    await SharedPrefHelper.setSecuredString(SharedPrefKeys.userToken, token);
   }
 }
