@@ -11,4 +11,5 @@ class Routes {
   static const String dateScreen = '/dateScreen';
   static const String profileScreen = '/profileScreen';
   static const String setting = '/setting';
+  static const String chatMessageScreen = '/chatMessageScreen';
 }

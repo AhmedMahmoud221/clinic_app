@@ -15,7 +15,7 @@ class CustomAppbar extends StatelessWidget {
           padding: EdgeInsets.all(4.w),
           child: GestureDetector(
             onTap: () => Navigator.pop(context), 
-            child: Container(
+            child: Container( 
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.grey[300]!, 

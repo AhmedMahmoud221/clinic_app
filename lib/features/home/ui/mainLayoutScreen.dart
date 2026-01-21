@@ -17,10 +17,9 @@ class MainLayoutScreen extends StatefulWidget {
 class _MainLayoutScreenState extends State<MainLayoutScreen> {
   int currentIndex = 0;
 
-  // قايمة الشاشات اللي هتظهر في الـ Stack
   final List<Widget> screens = [
     const HomeScreen(),
-    const ChatScreen(), // شاشات مؤقتة للتجربة
+    const ChatScreen(),
     const DateScreen(),
     const ProfileScreen(),
     const SearchScreen(),
@@ -30,7 +29,6 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // 1. الشاشات اللي بنبدل بينها
       body: SafeArea(
         child: IndexedStack(
           index: currentIndex,
@@ -38,16 +36,14 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
         ),
       ),
 
-      // 2. الزرار الأزرق الكبير اللي في النص
       floatingActionButton: Transform.translate(
-        offset: const Offset(0, -5), // رفعه بسيطة لفوق عشان يخرج من البار
+        offset: const Offset(0, -5), 
         child: SizedBox(
           width: 60.w,
           height: 60.h,
           child: FloatingActionButton(
-            // التعديل هنا: استخدام RoundedRectangleBorder بدل CircleBorder
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24), // قلل الرقم ده لو عايزه مربع أكتر (مثلاً 12)
+              borderRadius: BorderRadius.circular(24),
             ),
             backgroundColor: Colors.blue,
             elevation: 4,
@@ -61,19 +57,16 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
         ),
       ),
 
-      // 3. مكان الزرار (في نص الـ Navigation Bar)
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      // 4. الـ Bar نفسه (استخدمنا BottomAppBar عشان نعمل فجوة للزرار)
       bottomNavigationBar: BottomAppBar(
-        height: 55.h, // 2. قللنا ارتفاع البار نفسه عشان يبان الكيرف أوضح
+        height: 55.h, 
         color: Colors.white,
         shape: const CircularNotchedRectangle(),
         notchMargin: 6.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // الجزء الشمال (Home & Chat)
               Row(
                 children: [
                   IconButton(
@@ -87,7 +80,6 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
                   ),
                 ],
               ),
-              // الجزء اليمين (Calendar & Profile)
               Row(
                 children: [
                   IconButton(
@@ -98,12 +90,12 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
                   GestureDetector(
                     onTap: () {
                       setState(() {
-                        currentIndex = 3; // ترتيب الـ ProfileScreen في قائمة الـ screens
+                        currentIndex = 3;
                       });
                     },
                     child: CircleAvatar(
                       radius: 19,
-                      backgroundImage: AssetImage('assets/images/onboarding_doctor.png'), // صورة المستخدم
+                      backgroundImage: AssetImage('assets/images/onboarding_doctor.png'),
                     ),
                   ),
                 ],

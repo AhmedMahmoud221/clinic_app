@@ -19,6 +19,7 @@ class Setting extends StatelessWidget {
           children: [
             CustomAppbar(title: 'Setting'),
             verticalSpace(30.h),
+            
             SettingItems(
               icon: Icons.notifications_outlined, 
               tittle: 'Notification', 

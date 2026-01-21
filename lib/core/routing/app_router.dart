@@ -1,6 +1,7 @@
 import 'package:clinic_app/core/di/dependency_injection.dart';
 import 'package:clinic_app/core/routing/routes.dart';
 import 'package:clinic_app/features/chats/ui/chat_screen.dart';
+import 'package:clinic_app/features/chats/ui/widgets/chat_message_screen.dart';
 import 'package:clinic_app/features/dates/ui/date_screen.dart';
 import 'package:clinic_app/features/forget_password/logic/cubit/forget_password_cubit.dart';
 import 'package:clinic_app/features/forget_password/ui/forget_password_screen.dart';
@@ -94,6 +95,13 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => HomeCubit(getIt())..getSpecializations(),
             child: const Setting(),
+          ),
+        );
+      case Routes.chatMessageScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit(getIt())..getSpecializations(),
+            child: const ChatMessagesScreen(userName: '',),
           ),
         );
       default:
