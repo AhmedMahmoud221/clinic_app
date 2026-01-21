@@ -1,0 +1,16 @@
+import 'package:clinic_app/core/theming/styles.dart';
+import 'package:flutter/material.dart';
+
+class SearchScreen extends StatelessWidget {
+  const SearchScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Center(
+      child: Text(
+        'Search Screen', 
+        style: TextStyles.font28BlackBold,
+      ),
+    );
+  }
+}
