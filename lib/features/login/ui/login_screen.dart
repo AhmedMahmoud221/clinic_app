@@ -1,4 +1,6 @@
+import 'package:clinic_app/core/helpers/extensions.dart';
 import 'package:clinic_app/core/helpers/spacing.dart';
+import 'package:clinic_app/core/routing/routes.dart';
 import 'package:clinic_app/core/theming/styles.dart';
 import 'package:clinic_app/core/widgets/app_text_button.dart';
 import 'package:clinic_app/features/login/logic/cubit/login_cubit.dart';
@@ -39,9 +41,14 @@ class LoginScreen extends StatelessWidget {
                     verticalSpace(12),
                     Align(
                       alignment: AlignmentDirectional.centerEnd,
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyles.font13BlueRegular,
+                      child: GestureDetector(
+                        onTap: () {
+                          context.pushReplacementNamed(Routes.forgetPasswordScreen);
+                        },
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyles.font13BlueRegular,
+                        ),
                       ),
                     ),
                     verticalSpace(16),

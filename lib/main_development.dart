@@ -12,16 +12,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  // --- الخطوة الناقصة هنا ---
   await checkIfLoggedInUser();
-  // -----------------------
-  // to fix texts being hidden bug in flutter_screenutil in release mode
   await ScreenUtil.ensureScreenSize();
   runApp(DocApp(appRouter: AppRouter()));
 }
 
-// دالة التحقق
 checkIfLoggedInUser() async {
   String? userToken = await SharedPrefHelper.getSecuredString(
     SharedPrefKeys.userToken,

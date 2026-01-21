@@ -1,5 +1,8 @@
 import 'package:clinic_app/core/di/dependency_injection.dart';
 import 'package:clinic_app/core/routing/routes.dart';
+import 'package:clinic_app/features/forget_password/logic/cubit/forget_password_cubit.dart';
+import 'package:clinic_app/features/forget_password/ui/forget_password_screen.dart';
+import 'package:clinic_app/features/forget_password/ui/widgets/otp_verification_screen.dart';
 import 'package:clinic_app/features/home/logic/home_cubit.dart';
 import 'package:clinic_app/features/home/ui/home_screen.dart';
 import 'package:clinic_app/features/login/logic/cubit/login_cubit.dart';
@@ -30,6 +33,20 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => getIt<SignupCubit>(),
             child: const SignupScreen(),
+          ),
+        );
+      case Routes.forgetPasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => ForgetPasswordCubit(),
+            child: const ForgetPasswordScreen(),
+          ),
+        );
+      case Routes.optVerification:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => ForgetPasswordCubit(),
+            child: const OtpVerificationScreen(),
           ),
         );
       case Routes.homeScreen:
